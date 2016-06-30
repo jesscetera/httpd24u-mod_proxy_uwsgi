@@ -16,6 +16,8 @@ License:        GPLv2 with exceptions
 URL:            https://github.com/unbit/uwsgi
 Source0:        10-%{module}.conf
 Source1:        %{module}.conf
+# https://github.com/unbit/uwsgi/issues/1244
+Patch0:         uwsgi_apache_2.4.20.patch
 BuildRequires:  uwsgi-devel, %{httpd}-devel
 Requires:       uwsgi, %{httpd}, httpd-mmn = %{_httpd_mmn}
 
@@ -33,6 +35,7 @@ packages in EPEL, but built against httpd24u from IUS.
 %prep
 %setup -q -c -T
 cp %{_usrsrc}/uwsgi/%{version}/apache2/%{module}.c .
+%patch0 -p2
 
 
 %build
@@ -54,3 +57,4 @@ install -D -p -m 0644 %{SOURCE1} %{buildroot}%{_httpd_confdir}/%{module}.conf
 %changelog
 * Thu Jun 30 2016 Carl George <carl.george@rackspace.com> - 2.0.12-1.ius
 - Initial package
+- Add Patch0 to fix gh#1244

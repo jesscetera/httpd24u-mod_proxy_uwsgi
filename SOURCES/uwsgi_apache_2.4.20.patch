@@ -1,0 +1,24 @@
+From 0684b171422674951e2f3a56747049229aa83245 Mon Sep 17 00:00:00 2001
+From: Mathieu Arnold <mat@FreeBSD.org>
+Date: Mon, 9 May 2016 09:50:26 +0200
+Subject: [PATCH] apache mod proxy: Fix failure to compile against apache
+ 2.4.20
+
+Fix #1244
+---
+ apache2/mod_proxy_uwsgi.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/apache2/mod_proxy_uwsgi.c b/apache2/mod_proxy_uwsgi.c
+index 2e69122..7c1ad61 100644
+--- a/apache2/mod_proxy_uwsgi.c
++++ b/apache2/mod_proxy_uwsgi.c
+@@ -257,7 +257,7 @@ static request_rec *ap_proxy_make_fake_req(conn_rec *c, request_rec *r)
+     return rp;
+ }
+ 
+-static apr_status_t ap_proxy_buckets_lifetime_transform(request_rec *r,
++apr_status_t ap_proxy_buckets_lifetime_transform(request_rec *r,
+         apr_bucket_brigade *from, apr_bucket_brigade *to)
+ {
+     apr_bucket *e;
