@@ -8,7 +8,7 @@
 %global module mod_proxy_uwsgi
 
 Name:           %{httpd}-%{module}
-Version:        2.0.13.1
+Version:        2.0.14
 Release:        1.ius%{?dist}
 Summary:        uWSGI - Apache2 proxy module
 Group:          System Environment/Daemons
@@ -52,6 +52,9 @@ install -D -p -m 0644 %{SOURCE1} %{buildroot}%{_httpd_confdir}/%{module}.conf
 
 
 %changelog
+* Wed Oct 12 2016 Carl George <carl.george@rackspace.com> - 2.0.14-1.ius
+- Rebuild against uwsgi 2.0.14
+
 * Wed Aug 10 2016 Carl George <carl.george@rackspace.com> - 2.0.13.1-1.ius
 - Rebuild against uwsgi 2.0.13.1
 - Remove Patch0
